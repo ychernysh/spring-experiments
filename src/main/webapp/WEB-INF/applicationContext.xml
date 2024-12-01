@@ -6,6 +6,7 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd">
+    <import resource="securityContext.xml"/>
     <bean id="person" class="org.example.model.Person">
         <constructor-arg name="name" value="Dmitriy"/>
     </bean>

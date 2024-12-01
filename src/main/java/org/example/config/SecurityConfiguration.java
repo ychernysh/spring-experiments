@@ -36,8 +36,6 @@ public class SecurityConfiguration {
     private ClientRegistration keycloakClientRegistration() {
         return ClientRegistrations.fromOidcIssuerLocation("http://localhost:8090/realms/dummy")
                 .registrationId("keycloak")
-                .clientName("Spring")
-                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .scope("openid")
                 .clientId("my-spring-webapp")
                 .clientSecret("Cx7qTVkI2rFPlMMBnX06ebj11ibyaiH6")

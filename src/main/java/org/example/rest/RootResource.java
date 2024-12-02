@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
 @Path("/")
 public class RootResource {
@@ -17,8 +18,16 @@ public class RootResource {
     @GET
     @Produces("text/plain")
     public String index() {
+        return "Hello, " + getAuthenticatedUserName() + "! I know abut " + person.getName() + ", btw...";
+    }
+
+    private String getAuthenticatedUserName() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userName = ((OidcUser)authentication.getPrincipal()).getName();
-        return "Hello, " + userName + "! I know abut " + person.getName() + ", btw...";
+        if (authentication instanceof OAuth2AuthenticationToken) {
+            return ((OidcUser)authentication.getPrincipal()).getName();
+        } else if (authentication instanceof JwtAuthenticationToken) {
+            return ((JwtAuthenticationToken)authentication).getTokenAttributes().get("preferred_username").toString();
+        }
+        return "null";
     }
 }

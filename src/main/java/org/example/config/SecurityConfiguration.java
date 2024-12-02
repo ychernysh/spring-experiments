@@ -39,6 +39,7 @@ public class SecurityConfiguration {
                 .scope("openid")
                 .clientId("my-spring-webapp")
                 .clientSecret("ORZjeGpva5VWBrnfLek2RRzVKcxw3yp6")
+                .userNameAttributeName("preferred_username")
                 .build();
     }
 

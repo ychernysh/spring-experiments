@@ -11,7 +11,7 @@
     <import resource="applicationContext.xml"/>
 
     <!-- Enables annotation-based configuration -->
-<!--    <context:annotation-config />-->
-<!--    <context:component-scan base-package="org.example.config" />-->
+    <context:annotation-config />
+    <context:component-scan base-package="org.example.config" />
 
 </beans>

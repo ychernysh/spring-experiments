@@ -16,7 +16,7 @@ public class HeaderOrCookieBearerTokenResolver implements BearerTokenResolver {
     if (fromDefault != null) {
       return fromDefault;
     }
-    Cookie cookie = WebUtils.getCookie(request, "my-jwt-cookie");
+    Cookie cookie = WebUtils.getCookie(request, "my-jwt-token");
     if (cookie != null) {
       return cookie.getValue();
     }

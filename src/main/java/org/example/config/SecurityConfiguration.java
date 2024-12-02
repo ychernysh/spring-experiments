@@ -13,6 +13,7 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtDecoders;
 import org.springframework.security.oauth2.server.resource.web.BearerTokenResolver;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -21,7 +22,9 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.authorizeHttpRequests(r -> r.anyRequest().authenticated())
-                .oauth2Login(Customizer.withDefaults())
+                .oauth2Login(oa2l -> {
+                    oa2l.successHandler(new SetCookieAuthenticationSuccessHandler());
+                })
                 .oauth2ResourceServer(rs -> {
                     rs.jwt(Customizer.withDefaults());
                 })

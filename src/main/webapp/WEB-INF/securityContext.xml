@@ -10,7 +10,7 @@
         <oauth2-login user-service-ref=""/>
     </http>
     <client-registrations>
-        <client-registration registration-id="keycloak" client-id="my-spring-webapp" client-secret="Cx7qTVkI2rFPlMMBnX06ebj11ibyaiH6" scope="openid" provider-id="keycloak"/>
+        <client-registration registration-id="keycloak" client-id="my-spring-webapp" client-secret="ORZjeGpva5VWBrnfLek2RRzVKcxw3yp6" scope="openid" provider-id="keycloak"/>
         <provider provider-id="keycloak" issuer-uri="http://localhost:8090/realms/dummy" user-info-user-name-attribute="preferred_username"/>
     </client-registrations>
 

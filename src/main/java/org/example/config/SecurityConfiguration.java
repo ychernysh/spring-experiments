@@ -38,7 +38,7 @@ public class SecurityConfiguration {
                 .registrationId("keycloak")
                 .scope("openid")
                 .clientId("my-spring-webapp")
-                .clientSecret("Cx7qTVkI2rFPlMMBnX06ebj11ibyaiH6")
+                .clientSecret("ORZjeGpva5VWBrnfLek2RRzVKcxw3yp6")
                 .build();
     }
 

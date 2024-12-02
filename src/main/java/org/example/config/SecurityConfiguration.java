@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtDecoders;
+import org.springframework.security.oauth2.server.resource.web.BearerTokenResolver;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -35,6 +36,11 @@ public class SecurityConfiguration {
     @Bean
     public JwtDecoder jwtDecoder() {
         return JwtDecoders.fromOidcIssuerLocation("http://localhost:8090/realms/dummy");
+    }
+
+    @Bean
+    BearerTokenResolver bearerTokenResolver() {
+        return new HeaderOrCookieBearerTokenResolver();
     }
 
     private ClientRegistration keycloakClientRegistration() {
